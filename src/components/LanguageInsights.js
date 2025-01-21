@@ -7,17 +7,18 @@ import "../styles/LanguageInsights.css";
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 const LanguageInsights = ({ data }) => {
+  // Aesthetically pleasing pastel colors
   const colors = [
-    "red",
-    "blue",
-    "green",
-    "yellow",
-    "orange",
-    "purple",
-    "pink",
-    "brown",
-    "gray",
-    "cyan",
+    "#FFB6C1", // Soft pink
+    "#ADD8E6", // Light blue
+    "#98FB98", // Light green
+    "#FFFACD", // Soft yellow
+    "#FFDAB9", // Peach
+    "#E6E6FA", // Lavender
+    "#98FF98", // Mint green
+    "#FF7F50", // Light coral
+    "#B0E0E6", // Pale blue
+    "#AFEEEE", // Light teal
   ];
 
   const chartData = {
@@ -35,16 +36,31 @@ const LanguageInsights = ({ data }) => {
   if (!data || !data.languages || !data.counts || data.languages.length === 0) {
     return (
       <div className="language-insights">
-        <h2>Language Insights</h2>
-        <p>No language data available.</p>
+        <h2 style={{ color: "white" }}>Language Insights</h2>
+        <p style={{ color: "white" }}>No language data available.</p>
       </div>
     );
   }
 
+  const options = {
+    plugins: {
+      legend: {
+        labels: {
+          color: "white", // Set legend text color to white
+        },
+      },
+      tooltip: {
+        bodyColor: "white", // Set tooltip body text color to white
+        titleColor: "white", // Set tooltip title color to white
+      },
+    },
+    responsive: true, // Ensure the chart is responsive
+  };
+
   return (
     <div className="language-insights">
-      <h2>Language Insights</h2>
-      <Pie data={chartData} />
+      <h2 style={{ color: "white" }}>Language Insights</h2>
+      <Pie data={chartData} options={options} />
     </div>
   );
 };

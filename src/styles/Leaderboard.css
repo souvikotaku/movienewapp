@@ -1,0 +1,26 @@
+.leaderboard {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Slightly transparent border */
+  border-radius: 10px; /* Optional: Adjust border radius */
+  width: 140px;
+  backdrop-filter: blur(10px); /* Frosted glass effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: Adds a subtle shadow */
+}
+
+.leaderboard h3 {
+  margin: 0 0 10px;
+  font-size: 1.5rem;
+  color: #fff; /* White text for contrast */
+}
+
+.leaderboard ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard li {
+  font-size: 14px;
+  color: #fff; /* White text for contrast */
+}
