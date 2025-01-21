@@ -1,0 +1,26 @@
+.top-performers {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.top-performers ul {
+  padding: 0;
+  list-style: none;
+}
+
+.top-performers li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.top-performers li:last-child {
+  border-bottom: none;
+}
+
+.top-performers li span {
+  font-weight: bold;
+  color: #007bff;
+}

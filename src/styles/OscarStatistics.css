@@ -1,0 +1,16 @@
+.chart-container {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+.oscar-statistics {
+  width: 76%;
+}

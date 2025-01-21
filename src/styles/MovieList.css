@@ -1,0 +1,119 @@
+.movie-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.movie-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.movie-list li {
+  display: flex;
+  flex-direction: column; /* Stacking items vertically */
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.movie-list li:last-child {
+  border-bottom: none;
+}
+
+.movie-list li a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.movie-list li a:hover {
+  text-decoration: underline;
+}
+
+.movie-list .movie-title {
+  font-size: 18px;
+  color: #333;
+}
+
+.movie-list .movie-release {
+  font-size: 14px;
+  color: #777;
+}
+
+.movie-list .movie-charts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.movie-list {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.movie-list ul {
+  padding: 0;
+  list-style: none;
+}
+
+.movie-list li {
+  display: flex;
+  flex-direction: column; /* Stacking items vertically */
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 16px;
+}
+
+.movie-list li:last-child {
+  border-bottom: none;
+}
+
+.movie-list li a {
+  color: #007bff;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.movie-list li a:hover {
+  text-decoration: underline;
+}
+
+.movie-list .movie-title {
+  font-size: 18px;
+  color: #333;
+}
+
+.movie-list .movie-release {
+  font-size: 14px;
+  color: #777;
+}
+
+.movie-list .movie-charts {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.movie-list .oscar-statistics-card,
+.movie-list .language-insights-card {
+  width: 45%; /* You can adjust this width to control the chart size */
+  height: 150px; /* Adjust height of the chart card */
+}
+
+.movie-list .oscar-statistics-card canvas,
+.movie-list .language-insights-card canvas {
+  width: 100% !important; /* Ensure the canvas takes full width */
+  height: 100% !important; /* Ensure the canvas height is controlled */
+}
