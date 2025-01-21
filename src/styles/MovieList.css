@@ -15,6 +15,17 @@
   margin: auto;
 }
 
+/* Default color of the icon */
+.filter-icon {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for the button */
+.filter-button:hover .filter-icon {
+  color: orange;
+}
+
 .movie-list ul {
   padding: 0;
   list-style: none;
