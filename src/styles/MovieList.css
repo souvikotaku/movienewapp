@@ -193,14 +193,20 @@
   color: white;
 }
 
+.movie-description p {
+  margin: 5px 0;
+}
+.firstinputbutton {
+  visibility: none;
+}
 @media (orientation: portrait) {
   .inputdivnow {
     width: 100%;
+    justify-content: space-evenly;
   }
   .firstinputbutton {
     display: none;
   }
-
   .movie-list {
     padding: 10px;
     margin: 0 auto;
@@ -245,6 +251,14 @@
     margin-bottom: 10px;
     padding: 0 10px; /* Add some padding for better readability */
     text-align: center; /* Center-align text */
+  }
+
+  .movie-description p {
+    text-align: justify;
+  }
+
+  .movie-description div {
+    text-align: left;
   }
 
   .background-image {

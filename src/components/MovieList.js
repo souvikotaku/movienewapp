@@ -8,13 +8,51 @@ import LanguageInsights from "./LanguageInsights";
 import Leaderboard from "./Leaderboard";
 import { FiFilter } from "react-icons/fi"; // Import the filter icon
 
-const MovieDescription = ({ description }) => (
+const MovieDescription = ({ description, country, genre, imdbRating }) => (
   <div
     className="movie-description"
     style={{ color: "white", marginBottom: "20px" }}
   >
-    <h3>Description:</h3>
+    <h3
+      style={{
+        color: "lightgreen",
+      }}
+    >
+      Description:
+    </h3>
     <p>{description}</p>
+    <div style={{ marginTop: "10px" }}>
+      <p>
+        <strong
+          style={{
+            color: "lightgreen",
+          }}
+        >
+          Country:
+        </strong>{" "}
+        {country?.join(", ") || "N/A"}
+      </p>
+      <p>
+        <strong
+          style={{
+            color: "lightgreen",
+          }}
+        >
+          Genre:
+        </strong>{" "}
+        {genre?.join(", ") || "N/A"}
+      </p>
+      <p>
+        <strong
+          style={{
+            color: "lightgreen",
+          }}
+        >
+          IMDB Rating:
+        </strong>{" "}
+        {imdbRating || "N/A"}
+      </p>
+    </div>
   </div>
 );
 
@@ -138,6 +176,18 @@ const MovieList = ({ movies }) => {
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
             className="inputdivnow"
           >
+            <button
+              // ref={filterButtonRef}
+              // onClick={toggleFilter}
+              className="filter-button firstinputbutton"
+              title="Filter"
+              style={{
+                pointerEvents: "none",
+                visibility: "hidden",
+              }}
+            >
+              <FiFilter size={24} className="filter-icon" />
+            </button>
             <input
               type="text"
               value={query}
@@ -234,7 +284,12 @@ const MovieList = ({ movies }) => {
                   <div className="oscar-statistics-card">
                     <div className="movie-title">{movie.title}</div>
                     <div className="movie-release">{movie.year}</div>
-                    <MovieDescription description={movie.description} />
+                    <MovieDescription
+                      description={movie.description}
+                      country={movie.country}
+                      genre={movie.genre}
+                      imdbRating={movie.imdb_rating}
+                    />
                   </div>
                   <div style={{ display: "flex" }} className="othercardsdiv">
                     {filterOptions.oscarStatistics && (
