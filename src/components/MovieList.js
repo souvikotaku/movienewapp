@@ -119,10 +119,14 @@ const MovieList = ({ movies }) => {
             position: "relative",
           }}
         >
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div
+            style={{ display: "flex", alignItems: "center", gap: "10px" }}
+            className="inputdivnow"
+          >
             <button
               ref={filterButtonRef}
               // onClick={toggleFilter}
+              className="firstinputbutton"
               style={{
                 visibility: "hidden",
                 pointerEvents: "none",
@@ -248,7 +252,7 @@ const MovieList = ({ movies }) => {
                     <div className="movie-release">{movie.year}</div>
                     <MovieDescription description={movie.description} />
                   </div>
-                  <div style={{ display: "flex" }}>
+                  <div style={{ display: "flex" }} className="othercardsdiv">
                     {filterOptions.oscarStatistics && (
                       <OscarStatistics data={movie} />
                     )}
