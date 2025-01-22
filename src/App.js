@@ -1,14 +1,18 @@
+import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-// import Details from "./pages/Details";
+
+// Use React.lazy to dynamically load the Details component
 
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/details/:id" element={<Details />} /> */}
-      </Routes>
+      {/* Use Suspense to display a fallback while the component is loading */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+        </Routes>
+      </Suspense>
     </Router>
   );
 }
