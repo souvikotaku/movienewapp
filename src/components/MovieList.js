@@ -212,6 +212,21 @@ const MovieList = ({ movies }) => {
               <FiFilter size={24} className="filter-icon" />
             </button>
           </div>
+          <div
+            style={{
+              paddingTop: "5px",
+              paddingBottom: "5px",
+              fontStyle: "italic",
+            }}
+          >
+            {selectedYear === "" && selectedGenre === ""
+              ? "Showing all results"
+              : selectedYear === "" && selectedGenre !== ""
+              ? `Showing results for ${selectedGenre} genre`
+              : selectedYear !== "" && selectedGenre === ""
+              ? `Showing results for year ${selectedYear}`
+              : `Showing results for year ${selectedYear} and ${selectedGenre} genre`}
+          </div>
         </div>
       </div>
 

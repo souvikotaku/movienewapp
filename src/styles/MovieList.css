@@ -291,6 +291,6 @@
   .filter-popup {
     right: 0;
     left: unset !important;
-    border-radius: 0px 0px 8px 8px !important;
+    /* border-radius: 0px 0px 8px 8px !important; */
   }
 }
