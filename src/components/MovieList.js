@@ -8,7 +8,6 @@ import LanguageInsights from "./LanguageInsights";
 import Leaderboard from "./Leaderboard";
 import { FiFilter } from "react-icons/fi"; // Import the filter icon
 
-// New MovieDescription Component
 const MovieDescription = ({ description }) => (
   <div
     className="movie-description"
@@ -37,12 +36,26 @@ const MovieList = ({ movies }) => {
     cast: true,
   });
   const [filterPosition, setFilterPosition] = useState({ top: 0, left: 0 });
+  const [selectedYear, setSelectedYear] = useState("");
+  const [selectedGenre, setSelectedGenre] = useState("");
+
   const filterButtonRef = useRef(null);
   const popupRef = useRef(null);
+
+  const years = Array.from(new Set(movies.map((movie) => movie.year)));
+  const genres = Array.from(
+    new Set(movies.flatMap((movie) => movie.genre || []))
+  );
 
   const filteredMovies = movies
     .filter((movie) =>
       movie.title.toLowerCase().includes(debouncedQuery.toLowerCase())
+    )
+    .filter((movie) =>
+      selectedYear ? movie.year.toString() === selectedYear : true
+    )
+    .filter((movie) =>
+      selectedGenre ? movie.genre?.includes(selectedGenre) : true
     )
     .filter((movie, index, self) => {
       return index === self.findIndex((m) => m.title === movie.title);
@@ -65,30 +78,32 @@ const MovieList = ({ movies }) => {
     setFilterOptions((prev) => ({ ...prev, [name]: checked }));
   };
 
-  // Toggle Filter Popup
-  // Toggle Filter Popup
-  const toggleFilter = (event) => {
-    event.stopPropagation(); // Prevent click event from propagating to document
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
 
+  const handleGenreChange = (event) => {
+    setSelectedGenre(event.target.value);
+  };
+
+  const toggleFilter = (event) => {
+    event.stopPropagation();
     if (!showFilters && filterButtonRef.current) {
       const buttonRect = filterButtonRef.current.getBoundingClientRect();
       setFilterPosition({
-        top: buttonRect.bottom + window.scrollY + 10, // 10px spacing below button
-        left: buttonRect.left + window.scrollX, // Align to the button's left
+        top: buttonRect.bottom + window.scrollY + 10,
+        left: buttonRect.left + window.scrollX,
       });
     }
-
     setShowFilters((prevState) => !prevState);
   };
 
-  // Close popup when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      // Check if the click was outside the popup and the filter button
       if (
         popupRef.current &&
         !popupRef.current.contains(event.target) &&
-        !filterButtonRef.current.contains(event.target) // Prevent closing when clicking on the button
+        !filterButtonRef.current.contains(event.target)
       ) {
         setShowFilters(false);
       }
@@ -123,23 +138,6 @@ const MovieList = ({ movies }) => {
             style={{ display: "flex", alignItems: "center", gap: "10px" }}
             className="inputdivnow"
           >
-            <button
-              ref={filterButtonRef}
-              // onClick={toggleFilter}
-              className="firstinputbutton"
-              style={{
-                visibility: "hidden",
-                pointerEvents: "none",
-                padding: "5px 10px",
-                cursor: "pointer",
-                backgroundColor: "#007BFF",
-                color: "white",
-                border: "none",
-                borderRadius: "5px",
-              }}
-            >
-              Filter
-            </button>
             <input
               type="text"
               value={query}
@@ -147,14 +145,6 @@ const MovieList = ({ movies }) => {
               placeholder="Search for a movie"
               style={{ padding: "10px", width: "300px", borderRadius: "5px" }}
             />
-            <button
-              ref={filterButtonRef}
-              onClick={toggleFilter}
-              style={{
-                display: "none",
-              }}
-              title="Filter"
-            ></button>
             <button
               ref={filterButtonRef}
               onClick={toggleFilter}
@@ -169,13 +159,12 @@ const MovieList = ({ movies }) => {
                 marginTop: "10px",
               }}
             >
-              <FiFilter size={24} className="filter-icon" /> {/* Icon */}
+              <FiFilter size={24} className="filter-icon" />
             </button>
           </div>
         </div>
       </div>
 
-      {/* Filter Popup */}
       {showFilters && (
         <div
           className="filter-popup"
@@ -200,31 +189,26 @@ const MovieList = ({ movies }) => {
             style={{ display: "flex", flexDirection: "column", gap: "10px" }}
           >
             <label style={labelStyles}>
-              <input
-                type="checkbox"
-                name="oscarStatistics"
-                checked={filterOptions.oscarStatistics}
-                onChange={handleFilterChange}
-              />
-              Show Oscar Statistics
+              Year:
+              <select value={selectedYear} onChange={handleYearChange}>
+                <option value="">All</option>
+                {years.map((year) => (
+                  <option key={year} value={year}>
+                    {year}
+                  </option>
+                ))}
+              </select>
             </label>
             <label style={labelStyles}>
-              <input
-                type="checkbox"
-                name="languageInsights"
-                checked={filterOptions.languageInsights}
-                onChange={handleFilterChange}
-              />
-              Show Language Insights
-            </label>
-            <label style={labelStyles}>
-              <input
-                type="checkbox"
-                name="cast"
-                checked={filterOptions.cast}
-                onChange={handleFilterChange}
-              />
-              Show Cast
+              Genre:
+              <select value={selectedGenre} onChange={handleGenreChange}>
+                <option value="">All</option>
+                {genres.map((genre) => (
+                  <option key={genre} value={genre}>
+                    {genre}
+                  </option>
+                ))}
+              </select>
             </label>
           </div>
         </div>
@@ -272,7 +256,7 @@ const MovieList = ({ movies }) => {
               fontSize: "50px",
             }}
           >
-            No movies found for "{debouncedQuery}"
+            No movies found
           </p>
         )}
       </ul>
