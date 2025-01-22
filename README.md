@@ -17,3 +17,7 @@ You may also see any lint errors in the console.
 # The app is deployed here on netlify
 
 https://moviedashboardsearch.netlify.app/
+
+# Changes that I made
+
+I made changes to the data coming from https://www.jsondataai.com/api/guK8Sdo. I added poster image and movie description and reuploaded the updated json here https://github.com/souvikotaku/moviejsonnew
